@@ -1,0 +1,1 @@
+I have written a lot of redundant code, could have just used erase() to delete i + 1th index element.
