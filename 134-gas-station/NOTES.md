@@ -1,0 +1,1 @@
+Greedy approach with net gain at every step.
