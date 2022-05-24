@@ -13,21 +13,21 @@ class Solution{
         // two pointer method
         long sum = 0;
         int left = 0, right = n - 1;
-        
+        long frontSum = 0, backSum = 0;
         while(left < right) {
-            if(sum > 0)
+            if(frontSum > backSum)
             {
-                sum = sum - arr[right];
+                backSum = backSum + arr[right];
                 right--;
             }
             else
             {
-                sum = sum + arr[left];
+                frontSum = frontSum + arr[left];
                 left++;
             }
         }
         
-        if(sum != 0) return -1;
+        if(frontSum != backSum) return -1;
         
         return right + 1;
     }
