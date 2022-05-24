@@ -16,9 +16,15 @@ class Solution{
         
         while(left < right) {
             if(sum > 0)
-                sum = sum - arr[right--];
+            {
+                sum = sum - arr[right];
+                right--;
+            }
             else
-                sum = sum + arr[left++];
+            {
+                sum = sum + arr[left];
+                left++;
+            }
         }
         
         if(sum != 0) return -1;
