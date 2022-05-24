@@ -11,19 +11,18 @@ class Solution{
     // n: size of array
     int equilibriumPoint(long long arr[], int n) {
         // two pointer method
-        long sum = 0;
         int left = 0, right = n - 1;
         long frontSum = 0, backSum = 0;
         while(left < right) {
             if(frontSum > backSum)
             {
                 backSum = backSum + arr[right];
-                right--;
+                right = right - 1;
             }
             else
             {
                 frontSum = frontSum + arr[left];
-                left++;
+                left = left + 1;
             }
         }
         
