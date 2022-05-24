@@ -15,7 +15,7 @@ class Solution{
         int n = v.size();
         int prefix_sum[n];
         prefix_sum[0]=v[0];
-        map<long long int , int> m;
+        map<int , int> m;
         m[v[0]]=0;
         long long int max_sum =v[0];
         for(int i=1;i<n;i++)
@@ -33,7 +33,7 @@ class Solution{
 
             {
 
-                long long int sum = prefix_sum[i]-prefix_sum[m[v[i]]]+v[i] ;
+                int sum = prefix_sum[i]-prefix_sum[m[v[i]]]+v[i] ;
 
                 if(sum>max_sum)
 
