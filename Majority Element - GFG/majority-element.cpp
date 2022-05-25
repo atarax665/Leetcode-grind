@@ -15,6 +15,7 @@ class Solution{
     // size: size of input array
     int majorityElement(int a[], int size)
     {
+        // TC = O(N) SC = O(N)
         map<int, int> m;
         for(int i = 0; i < size; i++)
         {
