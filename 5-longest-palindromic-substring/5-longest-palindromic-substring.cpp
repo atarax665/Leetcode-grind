@@ -1,28 +1,27 @@
 class Solution {
 public:
-     int palindrome_size(string &s, int l, int r) {
+    int best = 1;
+    int pos = 0;
+     void palindrome_size(string &s, int l, int r) {
         while (l >= 0 && r < s.size() && s[l] == s[r]) {
             l--;
             r++;
         }
         
-        return r - l -1;
+        int newLen =  r - l -1;
+         if(best < newLen)
+         {
+             best = newLen;
+             pos = l + 1;
+         }
     }
     
     string longestPalindrome(string s) {   
-        int best = 1;
-        int pos = 0;
         
         for (int i = 0; i < s.size(); i++) {
-            int size = max(palindrome_size(s, i - 1, i + 1),
-                           palindrome_size(s, i - 1, i));
-            
-            if (size > best) {
-                best = size;
-                pos = i - size / 2;
-            }
+            palindrome_size(s, i, i);
+            palindrome_size(s, i, i + 1);
         }
-        
         return s.substr(pos, best);
     }
 };
