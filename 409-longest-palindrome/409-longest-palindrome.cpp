@@ -2,12 +2,12 @@ class Solution {
 public:
     int longestPalindrome(string s) {
         unordered_map<char, int> m;
-        for(auto i: s)
+        for(auto &i: s)
         {
             m[i]++;
         }
         vector<int> even, odd;
-        for(auto i : m)
+        for(auto &i : m)
         {
             if(i.second % 2 == 0)
             {
