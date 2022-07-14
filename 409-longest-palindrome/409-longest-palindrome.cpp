@@ -6,25 +6,24 @@ public:
         {
             m[i]++;
         }
-        vector<int> even, odd;
+        int ans = 0;
+        int flag = 0;
         for(auto &i : m)
         {
             if(i.second % 2 == 0)
             {
-                even.push_back(i.second);
+                ans += i.second;
             }
             else
             {
-                odd.push_back(i.second - i.second % 2);
+                ans += i.second - i.second % 2;
+                flag = 1;
             }
         }
-        int ans = accumulate(even.begin(), even.end(), 0);
-        if(!odd.empty())
+        if(flag == 1)
         {
-            ans += accumulate(odd.begin(), odd.end(), 0);
             ans++;
         }
-        
         return ans;
     }
 };
