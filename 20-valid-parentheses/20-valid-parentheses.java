@@ -7,36 +7,18 @@ class Solution {
   
          for(int i=1;i<str.length();i++)
         {
-          if(str.charAt(i)=='(')
+          if(str.charAt(i)=='('|| str.charAt(i)=='{'||str.charAt(i)=='[')
           
            st.push(str.charAt(i));
-           else if(str.charAt(i)==')')
-           {
-            if(st.peek()=='(')
-           st.pop();
-           else
-           st.push(str.charAt(i));}
-
-
-           if(str.charAt(i)=='{')
-           st.push(str.charAt(i));
-
-           else if(str.charAt(i)=='}'){
-           if(st.peek()=='{')
-           st.pop();
-           else 
-           st.push(str.charAt(i));}
-
+          
+          else
            
-           if(str.charAt(i)=='[')
-           st.push(str.charAt(i));
-
-           else if(str.charAt(i)==']'){
-           if(st.peek()=='[')
-           st.pop();
-           else
-           st.push(str.charAt(i));}
-
+           {
+            if (( st.peek() == '(' && str.charAt(i) == ')') || (st.peek ()== '{' && str.charAt(i) == '}') || (st.peek()== '[' && str.charAt(i) == ']'))
+               st.pop();
+               else 
+                   return false;
+           }
         }
         
         if(st.peek()=='1')
