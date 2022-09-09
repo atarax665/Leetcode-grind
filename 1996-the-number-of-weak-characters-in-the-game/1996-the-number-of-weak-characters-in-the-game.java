@@ -1,25 +1,28 @@
 class Solution {
-    public int numberOfWeakCharacters(int[][] properties) {
-        
-        // if we sort only by 1st indexes, there could be values where 1st index is the same 
-        // Arrays.sort(properties, (a,b) -> Integer.compare(a[0], b[0]));
-        
-        // b[1], a[1] because we need the 2nd values in descending order
-        Arrays.sort(properties, (a,b) -> (a[0] == b[0]) ? Integer.compare(b[1], a[1]) : Integer.compare(a[0], b[0]));
-        
-        int noOfWeakCharacters = 0;
-        int len = properties.length;
-       // improvization here - // we need to keep track of the max value
-        int max = properties[len-1][1];
-        
-        for(int i = len-2; i>=0 ;i--) {
+    class Comp implements Comparator<int[]>{
+        public int compare(int[] a,int[] b)
+        {
+            if(a[1]==b[1])
+                return Integer.compare(b[0],a[0]);
+            else
+                return Integer.compare(a[1],b[1]);
             
-            if(properties[i][1] < max) {
-                noOfWeakCharacters++;
-            } else {
-                max = properties[i][1];
-            }
         }
-        return noOfWeakCharacters;
     }
+    
+    public int numberOfWeakCharacters(int[][] prop) {
+        
+         
+        Arrays.sort(prop,new Comp());
+        int c=0;
+        int largestnum=prop[prop.length-1][0];
+        for(int i=prop.length-2;i>=0;i--)
+        {
+            if(largestnum>prop[i][0])
+                c++;
+            else
+                largestnum=prop[i][0];
+        }
+        return c;
+    }   
 }
