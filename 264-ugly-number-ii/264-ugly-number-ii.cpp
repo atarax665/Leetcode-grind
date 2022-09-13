@@ -1,28 +1,31 @@
-class Solution
-{
-    public:
-        int nthUglyNumber(int n)
-        {
-            vector<int> dp;
-            dp.push_back(1);
+class Solution {
+public:
+    int nthUglyNumber(int n) {
+        if(n == 1)
+        return 1;
+    if(n < 0)
+        return 0;
+    
+    vector<int> dp(n, 0);
 
-            int i = 0, j = 0, k = 0;
-            int temp = n - 1;
-
-            while (temp--)
-            {
-                int a = 2 * dp[i];
-                int b = 3 * dp[j];
-                int c = 5 * dp[k];
-
-                int minval = min(a, min(b, c));
-                dp.push_back(minval);
-
-                if (a == minval) i++;
-                if (b == minval) j++;
-                if (c == minval) k++;
-            }
-
-            return dp[n - 1];
-        }
+    dp[0] = 1;
+    
+    int two = 0, three = 0, five = 0;
+    
+        // fill the DP array
+    for(int i = 1;i < n; i++)  {
+        
+        dp[i] = min({dp[two]*2, dp[three]*3, dp[five]*5});
+        
+        if(dp[i] == dp[two]*2)
+            two++;
+        
+        if(dp[i] == dp[three]*3)
+            three++;
+        
+        if(dp[i] == dp[five]*5)
+            five++;
+          }
+    return dp[n-1];
+    }
 };
