@@ -1,31 +1,29 @@
 class Solution {
 public:
     int longestPalindrome(string s) {
-        if(s.length() == 1) return 1;
-        unordered_map<char,int> m;
-        for(int i = 0; i < s.length(); i++)
+        map<char, int> m;
+        for(auto i : s)
         {
-            m[s[i]]++;
+            m[i]++;
         }
-        int ans = 0;
-        bool odd = false;
-        for(auto i : m)
+    int sum = 0;
+    int odd = 0;
+    for(auto i : m)
+    {
+        if(i.second % 2 == 1)
         {
-            if(i.second%2 == 0)
-            {
-              ans += i.second;
-             }
-            
-            else
-            {
-                odd = true;          
-                ans += i.second-1;
-                
-            }
-                
+            odd++;
+            sum += i.second - 1;
         }
-        if(odd) return ans+1;
-        else return ans;
-        
+        else
+        {
+            sum += i.second;
+        }
+    }
+    if(odd != 0)
+    {
+        return sum + 1;
+    }
+    return sum;
     }
 };
