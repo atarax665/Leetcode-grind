@@ -15,13 +15,12 @@ public:
         if (root == nullptr)
             return root;
         
-        // Logic thgat we use to swap two numbers
-        TreeNode* tmp = root->left;
-        root->left = root->right;
-        root->right = tmp;
+        // Logic that we use to swap two numbers
+        swap(root->left, root->right);
         
         invertTree(root->left);
         invertTree(root->right);
+        
         return root;
     }
 };
