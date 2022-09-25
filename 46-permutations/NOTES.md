@@ -1,0 +1,1 @@
+Swap elements and call the recursive func. Then reswap it to go back to the original array.
