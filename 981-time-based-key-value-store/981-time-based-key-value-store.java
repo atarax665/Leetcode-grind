@@ -1,31 +1,34 @@
 class TimeMap {
-    HashMap <String, TreeMap <Integer, String> > store;
+    
+    // HashMap of key(String) corresponding of TreeMap<TimeStamp,Value>>
+    HashMap<String,TreeMap<Integer,String>> hm;
+    
     public TimeMap() {
-        store = new HashMap <>();
+        hm = new HashMap<String,TreeMap<Integer,String>>();
     }
     
     public void set(String key, String value, int timestamp) {
-        if(store.containsKey(key) == false){
-            store.put(key, new TreeMap <>());
-        }
-        store.get(key).put(timestamp, value);
+
+        TreeMap<Integer,String> tmap;
+        if(hm.get(key) != null)
+            tmap = hm.get(key);  
+        else
+            tmap = new TreeMap<>(Collections.reverseOrder());  
+        tmap.put(timestamp,value);
+        hm.put(key,tmap);
+        
     }
     
     public String get(String key, int timestamp) {
-        String value = new String();
-        if(store.containsKey(key)){
-            Integer previousTimeStamp = store.get(key).floorKey(timestamp);
-            if(previousTimeStamp != null){
-                value = store.get(key).get(previousTimeStamp);
+        for(Map.Entry m : hm.entrySet()){
+            if(m.getKey().equals(key)){
+                TreeMap<Integer,String> tmap = (TreeMap<Integer,String>)m.getValue();
+                for(Map.Entry tm : tmap.entrySet()){
+                    if((int)tm.getKey() <= timestamp) return String.valueOf(tm.getValue());
+                }
             }
         }
-        return value;
+        return "";
+        
     }
 }
-
-/**
- * Your TimeMap object will be instantiated and called as such:
- * TimeMap obj = new TimeMap();
- * obj.set(key,value,timestamp);
- * String param_2 = obj.get(key,timestamp);
- */
