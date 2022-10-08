@@ -7,11 +7,14 @@ public:
         if (curr == z)
             return true;
         vis[curr] = 1;
-        bool a = dfs(x, y, z, curr + x, vis);
-        bool b = dfs(x, y, z, curr - x, vis);
-        bool c = dfs(x, y, z, curr + y, vis);
-        bool d = dfs(x, y, z, curr - y, vis);
-        return a || b || c || d;
+        if(dfs(x, y, z, curr + x, vis) || dfs(x, y, z, curr - x, vis) || dfs(x, y, z, curr + y, vis) || dfs(x, y, z, curr - y, vis))
+            return true;
+        return false;
+        // bool a = dfs(x, y, z, curr + x, vis);
+        // bool b = dfs(x, y, z, curr - x, vis);
+        // bool c = dfs(x, y, z, curr + y, vis);
+        // bool d = dfs(x, y, z, curr - y, vis);
+        // return a || b || c || d;
     }
     bool canMeasureWater(int x, int y, int z)
     {
