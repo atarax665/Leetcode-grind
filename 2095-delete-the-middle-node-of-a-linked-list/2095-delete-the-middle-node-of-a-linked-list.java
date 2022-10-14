@@ -9,7 +9,7 @@
  * }
  */
 class Solution {
-       public ListNode deleteMiddle(ListNode head) {
+      public ListNode deleteMiddle(ListNode head) {
         ListNode temp=head;
         int k=0;
         if(head==null)
@@ -22,13 +22,14 @@ class Solution {
         }
         if(k==1)
         return null;
-       int mid=k/2 - 1;
+       int mid=k/2;
    
     ListNode prev=head;
-    while(mid!=0&& prev!=null)
+    while(mid!=1)
     {
   prev=prev.next;
   mid--;
+
     }
     prev.next=prev.next.next;
 
