@@ -17,7 +17,6 @@ class Solution {
         StringBuilder saystr=new StringBuilder();
          char[] s=c.toCharArray();
         char k=c.charAt(0);
-        
     for(int i=1;i<s.length;i++)
     {
   
@@ -29,8 +28,9 @@ class Solution {
        else
        {
            saystr.append(count).append(k);
+           k=s[i];
            count=1;
-  k=s[i];
+ 
        }
     }
      saystr.append(count).append(k);
