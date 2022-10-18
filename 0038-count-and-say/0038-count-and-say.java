@@ -16,7 +16,7 @@ class Solution {
         int count=1;
         StringBuilder saystr=new StringBuilder();
          char[] s=c.toCharArray();
-        char k=c.charAt(0);
+        char k=s[0];
     for(int i=1;i<s.length;i++)
     {
   
