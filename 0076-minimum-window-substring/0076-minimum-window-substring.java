@@ -37,7 +37,7 @@ class Solution {
                     minLength = i - j;
                 }
                 
-                char ch = s.charAt (j++);
+                char ch = s.charAt(j++);
                 if (frequencyS[ch] == frequencyT[ch])
                 {
                     length++;
