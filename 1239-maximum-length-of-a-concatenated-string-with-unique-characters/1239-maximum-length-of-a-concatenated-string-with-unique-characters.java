@@ -15,10 +15,10 @@ class Solution {
     }
     
     private boolean isValid(String currentString, String newString){
-        boolean[] array = new boolean[26]; // less memory than int[]
+        boolean[] array = new boolean[26];
         for (int i = 0; i < newString.length(); i++) {
-            char c = newString.charAt(i); // look up c once
-            if (array[c -'a'] || currentString.indexOf(c) != -1) return false; // faster than .contains which throws an error without String concatenation ( +"" )
+            char c = newString.charAt(i);
+            if (array[c -'a'] || currentString.indexOf(c) != -1) return false;
             array[c -'a'] = true;
         }
         return true;
