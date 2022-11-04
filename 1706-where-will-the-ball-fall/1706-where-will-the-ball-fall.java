@@ -59,26 +59,7 @@ class Solution {
          }
      }
          ans = curr.clone();
-         for(int k = 0; k < grid[0].length; k++)
-        {
-            System.out.println(curr[k]);
-        }
-         System.out.println(" ");
-    }
-        // for(int i = 0; i < grid[0].length; i++)
-        // {
-        //     System.out.println(curr[i]);
-        // }
-        int[] finalAns = new int[grid[0].length];
-        Arrays.fill(finalAns, -1);
-        for(int j=0;j<grid[0].length;j++)
-     {
-    if(ans[j] != -1)
-    {
-        finalAns[ans[j]] = j;
-    }
-     }
-        
+    }   
     return ans;
 }
 }
