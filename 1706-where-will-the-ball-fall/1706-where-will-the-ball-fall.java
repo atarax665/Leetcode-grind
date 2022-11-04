@@ -1,25 +1,74 @@
 class Solution {
     public int[] findBall(int[][] grid) {
-        int[] curr= new int[grid[0].length];
+     int[] curr= new int[grid[0].length];
      int[] ans= new int[grid[0].length];
-     Arrays.fill(ans,-1);
+        
+    if(grid[0].length == 1)
+    {
+        int[] a = {-1};
+        return a;
+    }
+     // Arrays.fill(ans,-1);
      for(int j=0;j<grid[0].length;j++)
      {
     curr[j]=j;
      }
-     for(int i=0;i<grid.length;i++){
-     for(int j=0;j<grid[i].length-1;j++)
+        
+     for(int i=0;i<grid.length;i++)
      {
-    if(grid[i][j]==1&&grid[i][j+1]==1)
-    ans[j + 1]=curr[j];
-    if(grid[i][j]==-1&& grid[i][j+1]==-1)
-    ans[j] = curr[j + 1];
-     } 
-        curr = ans.clone();
-         if(i == grid.length - 1)
-             break;
-         Arrays.fill(ans, -1);
+     for(int j=0;j<grid[i].length;j++)
+     {
+         if(ans[j]==-1)
+         {
+             continue;
+         }
+         if(i == 0 && ((j == 0 && grid[i][curr[j]] == -1) || (j == grid[0].length - 1 && grid[i][curr[j]] == 1)))
+         {
+             curr[j] = -1;
+         }
+         else if(curr[j]!=grid[i].length-1 && curr[j] != 0 && ((grid[i][curr[j]] == 1 && grid[i][curr[j] + 1] == -1) || (grid[i][curr[j]] == -1 && grid[i][curr[j] - 1] == 1)))
+         {
+             curr[j] = -1;
+         }
+         else if(curr[j]!=grid[i].length-1 && curr[j] != 0 && grid[i][curr[j]] == -1)
+         {
+             if(grid[i][curr[j] - 1] == 1)
+                 curr[j] = -1;
+             else
+                 curr[j] = curr[j] - 1;
+         }
+         
+        else if(curr[j]!=grid[i].length-1 && grid[i][curr[j]]==1&&grid[i][curr[j]+1]==1)
+        {
+            if(curr[j] + 1 > grid[i].length - 1)
+                curr[j] = -1;
+            else
+                curr[j] = curr[j] + 1;
+        }
+            
+        else if(curr[j] != 0 && grid[i][curr[j]] == -1 && grid[i][curr[j]-1]==-1 )
+        {
+            if(curr[j] - 1 < 0)
+                curr[j] = -1;
+            else
+                curr[j] = curr[j] - 1;
+        }
+         else
+         {
+             curr[j] = -1;
+         }
+     }
+         ans = curr.clone();
+         for(int k = 0; k < grid[0].length; k++)
+        {
+            System.out.println(curr[k]);
+        }
+         System.out.println(" ");
     }
+        // for(int i = 0; i < grid[0].length; i++)
+        // {
+        //     System.out.println(curr[i]);
+        // }
         int[] finalAns = new int[grid[0].length];
         Arrays.fill(finalAns, -1);
         for(int j=0;j<grid[0].length;j++)
@@ -29,6 +78,7 @@ class Solution {
         finalAns[ans[j]] = j;
     }
      }
-    return finalAns;
+        
+    return ans;
 }
 }
