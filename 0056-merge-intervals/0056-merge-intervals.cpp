@@ -22,13 +22,6 @@ public:
                 freq[intervals[i][1]] -= 1;
             }
         }
-        
-        for(int i = 0; i < 19; i++)
-        {
-            cout<<freq[i]<<" ";
-        }
-        // 1,5 5,5 5, 6
-         // 1,0,0,0,-1
         int k = 0;
         int sum = 0;
         for(int i = 0; i < 10001; i++)
