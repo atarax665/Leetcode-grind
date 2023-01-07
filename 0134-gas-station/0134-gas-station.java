@@ -14,6 +14,13 @@ class Solution {
                 curr_gas=0;
             }
         }
-        return (total_gas<total_cost)?-1:starting_point;
+        if(total_gas<total_cost)
+        {
+            return -1;
+        }
+        else
+        {
+            return starting_point;
+        }
     }
 }
